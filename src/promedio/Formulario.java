@@ -6,6 +6,8 @@
 package promedio;
 
 import java.awt.Image;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.swing.ImageIcon;
 
 /**
@@ -76,7 +78,9 @@ public class Formulario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
@@ -91,8 +95,8 @@ public class Formulario extends javax.swing.JFrame {
                                     .addComponent(jTextField2)
                                     .addComponent(jTextField3))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,9 +157,10 @@ public class Formulario extends javax.swing.JFrame {
         
         //Proceso calcular promedio
         double resultado = (numero1 + numero2 + numero3)/3;
-        
+        //clase que permite limitar el numero de decimales en una cifra y realizar redondeo.
+        BigDecimal resulDecimal = new BigDecimal(resultado).setScale(2, RoundingMode.UP);
         //Salida
-        jTextField4.setText(""+resultado);
+        jTextField4.setText(""+resulDecimal.doubleValue());
         
         //Se instancia las imagenes con su respectiva ruta
         ImageIcon rojo = new ImageIcon(getClass().getResource("/Imagenes/rojo.png"));
@@ -176,6 +181,7 @@ public class Formulario extends javax.swing.JFrame {
                 if(resultado>3.5){
                     jLabel4.setIcon(iconoVerde);
                 }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
