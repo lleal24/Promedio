@@ -158,7 +158,7 @@ public class Formulario extends javax.swing.JFrame {
         //Proceso calcular promedio
         double resultado = (numero1 + numero2 + numero3)/3;
         //clase que permite limitar el numero de decimales en una cifra y realizar redondeo.
-        BigDecimal resulDecimal = new BigDecimal(resultado).setScale(2, RoundingMode.UP);
+        BigDecimal resulDecimal = new BigDecimal(resultado).setScale(1, RoundingMode.UP);
         //Salida
         jTextField4.setText(""+resulDecimal.doubleValue());
         
